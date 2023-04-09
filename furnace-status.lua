@@ -14,7 +14,13 @@ while true do
   if modem.isOpen(11) then
     sleep(5)
     local event, side, channel, replyChannel, message, distance = os.pullEvent("modem_message")
-
+    
+    monitor.clear()
+    monitor.setCursorPos(4,1)
+    monitor.write("Furnace 1")
+    monitor.setCursorPos(4,2)
+    monitor.write("Fill Lvl")
+    
     if message == 15.0 then
       monitor.setBackgroundColor(colors.green)
     elseif message == 10.0 then
@@ -24,11 +30,7 @@ while true do
     elseif message == 0.0 then
       monitor.setBackgroundColor(colors.red)
     end
-    monitor.clear()
-    monitor.setCursorPos(4,1)
-    monitor.write("Furnace 1")
-    monitor.setCursorPos(4,2)
-    monitor.write("Fill Lvl")
+
     monitor.setCursorPos(6,3)
     monitor.write(message)
     
