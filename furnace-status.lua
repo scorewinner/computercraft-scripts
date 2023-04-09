@@ -16,10 +16,10 @@ while true do
     monitor.write(message)
     
     if message == 5.0 then
-      monitor.setBackgroundColor(color.orange)
+      monitor.setBackgroundColor(colors.orange)
     end
     if message == 0.0 then
-      monitor.setBackgroundColor(color.red)
+      monitor.setBackgroundColor(colors.red)
     end
     
   else
