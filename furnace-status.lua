@@ -1,5 +1,6 @@
 local modem = peripheral.find("modem") or error("No modem attached", 0)
 local monitor = peripheral.find("monitor")
+local speaker = peripheral.find("speaker")
 
 monitor.setTextScale(0.5)
 monitor.clear()
@@ -29,6 +30,7 @@ while true do
       monitor.setBackgroundColor(colors.orange)
     elseif message == 0.0 then
       monitor.setBackgroundColor(colors.red)
+      speaker.playNote("bell", 3, 6)
     end
 
     monitor.setCursorPos(6,3)
