@@ -7,6 +7,8 @@ monitor.setCursorPos(4,1)
 monitor.write("Furnace 1")
 monitor.setCursorPos(4,2)
 monitor.write("Fill Lvl")
+monitor.setCursorPos(6,3)
+monitor.write("loading")
 
 while true do
   if modem.isOpen(11) then
@@ -22,8 +24,12 @@ while true do
     elseif message == 0.0 then
       monitor.setBackgroundColor(colors.red)
     end
+    monitor.clear()
+    monitor.setCursorPos(4,1)
+    monitor.write("Furnace 1")
+    monitor.setCursorPos(4,2)
+    monitor.write("Fill Lvl")
     monitor.setCursorPos(6,3)
-    monitor.clearLine()
     monitor.write(message)
     
     
