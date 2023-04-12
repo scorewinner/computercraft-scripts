@@ -10,11 +10,11 @@ local function make_section(name, x, y, w, h)
 	for row = 1, h do
 		monitor.setCursorPos(x, y + row - 1)
 		local char = (row == 1 or row == h) and "\127" or " "
-		colored("\127" .. string.rep(char, w - 2) .. "\127", colors.gray)
+		coloring("\127" .. string.rep(char, w - 2) .. "\127", colors.gray)
 	end
 
 	monitor.setCursorPos(x + 2, y)
-	colored(" " .. name .. " ")
+	coloring(" " .. name .. " ")
 
 	return window.create(term.current(), x + 2, y + 2, w - 4, h - 4)
 end
@@ -28,26 +28,26 @@ local function update_info()
 	term.clear()
 	term.setCursorPos(1, 1)
 
-	colored("REACTOR: ")
-	colored(data.reactor_on and "ON " or "OFF", data.reactor_on and colors.green or colors.red)
-	colored("  LEVER: ")
-	colored(data.lever_on and "ON " or "OFF", data.lever_on and colors.green or colors.red)
-	colored("  R. LIMIT: ")
-	colored(string.format("%4.1f", data.reactor_burn_rate), colors.blue)
-	colored("/", colors.lightGray)
-	colored(string.format("%4.1f", data.reactor_max_burn_rate), colors.blue)
+	coloring("REACTOR: ")
+	coloring(data.reactor_on and "ON " or "OFF", data.reactor_on and colors.green or colors.red)
+	coloring("  LEVER: ")
+	coloring(data.lever_on and "ON " or "OFF", data.lever_on and colors.green or colors.red)
+	coloring("  R. LIMIT: ")
+	coloring(string.format("%4.1f", data.reactor_burn_rate), colors.blue)
+	coloring("/", colors.lightGray)
+	coloring(string.format("%4.1f", data.reactor_max_burn_rate), colors.blue)
 
 	term.setCursorPos(1, 3)
 
-	colored("STATUS: ")
+	coloring("STATUS: ")
 	if state == STATES.READY then
-		colored("READY, flip lever to start", colors.blue)
+		coloring("READY, flip lever to start", colors.blue)
 	elseif state == STATES.RUNNING then
-		colored("RUNNING, flip lever to stop", colors.green)
+		coloring("RUNNING, flip lever to stop", colors.green)
 	elseif state == STATES.ESTOP and not all_rules_met() then
-		colored("EMERGENCY STOP, safety rules violated", colors.red)
+		coloring("EMERGENCY STOP, safety rules violated", colors.red)
 	elseif state == STATES.ESTOP then
-		colored("EMERGENCY STOP, toggle lever to reset", colors.red)
+		coloring("EMERGENCY STOP, toggle lever to reset", colors.red)
 	end -- STATES.UNKNOWN cases handled above
 
 	term.redirect(prev_mon)
