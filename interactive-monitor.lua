@@ -1,3 +1,5 @@
+local monitor = peripheral.find("monitor")
+
 local function coloring(text, fg, bg)
 	monitor.setTextColor(fg or colors.white)
 	monitor.setBackgroundColor(bg or colors.blue)
